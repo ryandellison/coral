@@ -1,6 +1,6 @@
 # coral
 
-Coral is a kernel-mode linux keylogger that logs keys by registering a keyboard notifier with
+Coral is a kernel space linux keylogger that logs keys by registering a keyboard notifier with
 the kernel.
 
 ## Building
