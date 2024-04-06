@@ -1,8 +1,12 @@
 #
+# Makefile
+#
 # Makefile split into kbuild part and normal part to support backwards compatability
 # with kernels that doesn't know of Kbuild files.
 # The command line call of this Makefile invokes the normal part,
 # while the make calls invoke the kbuild part.
+#
+# Author: Ryan Ellison
 #
 
 ifneq ($(KERNELRELEASE),)

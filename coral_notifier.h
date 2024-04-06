@@ -1,3 +1,12 @@
+/*
+ * coral_notifier.h
+ *
+ * Header file for coral_notifier.c
+ *
+ * Author: Ryan Ellison
+ *
+ */
+
 #ifndef CORAL_NOTIFIER_H
 #define CORAL_NOTIFIER_H
 

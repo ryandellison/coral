@@ -1,25 +1,35 @@
+/*
+ * coral.c
+ *
+ * The purpose of this file is to initialize and cleanup the module and handle
+ * the registering/unregistering of the keyboard notifier and the character
+ * device driver.
+ *
+ * Author: Ryan Ellison
+ *
+ */
+
 #include <linux/module.h>        /* required by all kernel modules, module_init(), module_exit() */
 #include <linux/init.h>          /* __init, __exit, module_init, module_exit macros */
-#include <linux/printk.h>        /* pr_info() */
+#include <linux/printk.h>        /* pr_alert() */
 #include <linux/device.h>        /* device_create(), device_destroy() */
 #include <linux/device/class.h>  /* class_create(), class_destroy() */
 #include <linux/kdev_t.h>        /* MKDEV macro */
 #include <linux/string.h>        /* memset() */
+#include <linux/fs.h>            /* register_chrdev(), unregister_chrdev() */
 #include <linux/keyboard.h>      /* register_keyboard_notifier(), unregister_keyboard_notifier() */
 #include <linux/version.h>
 
 #include "coral_device.h"        /* fops */
 #include "coral_notifier.h"      /* keybuf */
 
-
+/* name of the character device to be created */
 #define DEVICE_NAME   "coral_dev"
-
 
 /* major number of our device, to be dynamically assigned during module initialization */
 static int device_major;
 
 static struct class *device_class;
-
 
 /*
  * coral_init()
@@ -77,10 +87,8 @@ static void __exit coral_cleanup(void)   /* called just before module is removed
   unregister_keyboard_notifier(&notif_block);
 }
 
-
 /* these need to be set because non-standard function names are used */
 module_init(coral_init);
 module_exit(coral_cleanup);
-
 
 MODULE_LICENSE("GPL");
