@@ -22,7 +22,7 @@ After installing the necessary packages, coral can be easily built using:
 
 Once built, coral can be installed by inserting the module into the kernel:
 ```
-# insmod coral-lkm.ko
+# insmod coral_lkm.ko
 ```
 
 This will register the character-device driver, create the character device used to interact
@@ -32,14 +32,14 @@ with coral in `/dev`, and register the keyboard notifier.
 
 After installing, the keys that are logged can be viewed by running:
 ```
-# cat /dev/coral-dev
+# cat /dev/coral_dev
 ```
 
 ## Removing
 
 To remove coral, use the following command:
 ```
-# rmmod coral-lkm
+# rmmod coral_lkm
 ```
 
 Removing coral will destroy the character device, unregister the character device driver,
